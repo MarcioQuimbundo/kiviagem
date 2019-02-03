@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kiviagem/CustomAppBar.dart';
 import 'package:kiviagem/CustomShapeClipper.dart';
 import 'package:intl/intl.dart';
 void main() => runApp(MaterialApp(
@@ -25,6 +26,7 @@ class HomeScreen extends StatelessWidget {
           homeScreenBottomPart,
         ],
       ),
+      bottomNavigationBar: CustomAppBar(),
     );
   }
 }
