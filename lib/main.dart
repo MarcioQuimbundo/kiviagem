@@ -253,14 +253,74 @@ class CityCard extends StatelessWidget {
       this.oldPrice, this.newPrice);
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: <Widget>[
-        Container(
-          height: 210.0,
-          width: 160.0,
-          child: Image.asset(imagePath),
-        )
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      child: ClipRRect(
+        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+        child: Stack(
+          children: <Widget>[
+            Container(
+              height: 210.0,
+              width: 160.0,
+              child: Image.asset(
+                imagePath,
+                fit: BoxFit.cover,
+              ),
+            ),
+            Positioned(
+              left: 0.0,
+              bottom: 0.0,
+              width: 160.0,
+              height: 90.0,
+              child: Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.bottomCenter,
+                    end: Alignment.topCenter,
+                    colors: [
+                    Colors.black, Colors.black12
+                  ])
+                ),
+              ),
+            ),
+            Positioned(
+              left: 10.0,
+              bottom: 10.0,
+              right: 10.0,
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(cityName,
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                              fontSize: 18.0)),
+                      Text(monthYear,
+                          style: TextStyle(
+                              fontWeight: FontWeight.normal,
+                              color: Colors.white,
+                              fontSize: 14.0)),
+                    ],
+                  ),
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 6.0, vertical: 2.0),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                        shape: BoxShape.rectangle,
+                        borderRadius: BorderRadius.all(Radius.circular(10.0))),
+                    child: Text("$discount%",
+                        style: TextStyle(fontSize: 14.0, color: Colors.black)),
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
+      ),
     );
   }
 }
