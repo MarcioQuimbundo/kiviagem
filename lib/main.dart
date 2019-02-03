@@ -2,15 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:kiviagem/CustomShapeClipper.dart';
 
 void main() => runApp(MaterialApp(
-  title: "Kiviagem Mock Up",
-  debugShowCheckedModeBanner: false,
-  home: HomeScreen(),
-));
+      title: "Kiviagem Mock Up",
+      debugShowCheckedModeBanner: false,
+      home: HomeScreen(),
+    ));
+
+Color firstColor = Color(0xFFF47D15);
+Color secondColor = Color(0xFFEF7772C);
 
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(  
+    return Scaffold(
       body: Column(
         children: <Widget>[
           HomeScreenTopPart(),
@@ -34,7 +37,11 @@ class _HomeScreenTopState extends State<HomeScreenTopPart> {
       children: <Widget>[
         ClipPath(
           clipper: CustomShapeClipper(),
-          child: Container(height: 400.0, color: Colors.orange,),
+          child: Container(
+              height: 400.0,
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(colors: [firstColor, secondColor])),
+                  ),
         )
       ],
     );
