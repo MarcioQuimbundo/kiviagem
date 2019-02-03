@@ -41,7 +41,6 @@ class HomeScreenTopPart extends StatefulWidget {
 }
 
 class _HomeScreenTopState extends State<HomeScreenTopPart> {
-
   var selectedLocationIndex = 0;
 
   @override
@@ -92,13 +91,18 @@ class _HomeScreenTopState extends State<HomeScreenTopPart> {
                                   value: 1,
                                 ),
                               ]),
-                              Spacer(),
-                              Icon(Icons.settings, color: Colors.white,)
+                      Spacer(),
+                      Icon(
+                        Icons.settings,
+                        color: Colors.white,
+                      )
                     ],
                   ),
                 ),
                 SizedBox(height: 50.0),
-                Text('Onde você\nquer ir??', style: TextStyle(fontSize: 26.0, color: Colors.white), textAlign: TextAlign.center),
+                Text('Onde você\nquer ir??',
+                    style: TextStyle(fontSize: 26.0, color: Colors.white),
+                    textAlign: TextAlign.center),
                 SizedBox(height: 30.0),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 32.0),
@@ -110,11 +114,15 @@ class _HomeScreenTopState extends State<HomeScreenTopPart> {
                       style: dropDownMenuItemStyle,
                       cursorColor: appTheme.primaryColor,
                       decoration: InputDecoration(
-                        contentPadding: EdgeInsets.symmetric(horizontal: 32.0, vertical: 14.0),
+                        contentPadding: EdgeInsets.symmetric(
+                            horizontal: 32.0, vertical: 14.0),
                         suffixIcon: Material(
                           elevation: 2.0,
                           borderRadius: BorderRadius.all(Radius.circular(30.0)),
-                          child: Icon(Icons.search, color: Colors.black,),
+                          child: Icon(
+                            Icons.search,
+                            color: Colors.black,
+                          ),
                         ),
                         border: InputBorder.none,
                       ),
@@ -122,11 +130,46 @@ class _HomeScreenTopState extends State<HomeScreenTopPart> {
                   ),
                 ),
                 Row(
-
+                  children: <Widget>[
+                  ],
                 ),
               ],
             ),
           ),
+        )
+      ],
+    );
+  }
+}
+
+class ChoiceChip extends StatefulWidget {
+  final IconData icon;
+  final String text;
+
+  ChoiceChip({this.icon, this.text});
+
+  @override
+  ChoiceChipState createState() {
+    return ChoiceChipState();
+  }
+}
+
+class ChoiceChipState extends State<ChoiceChip> {
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: <Widget>[
+        Icon(
+          widget.icon,
+          size: 20.0,
+          color: Colors.white,
+        ),
+        SizedBox(width: 20.0),
+        Text(
+          widget.text,
+          style: TextStyle(color: Colors.white, fontSize: 14.0),
         )
       ],
     );
