@@ -22,6 +22,7 @@ class HomeScreen extends StatelessWidget {
       body: Column(
         children: <Widget>[
           HomeScreenTopPart(),
+          homeScreenBottomPart,
         ],
       ),
     );
@@ -138,7 +139,7 @@ class _HomeScreenTopState extends State<HomeScreenTopPart> {
                   children: <Widget>[
                     InkWell(
                       child: ChoiceChip(
-                          Icons.flight_takeoff, "Flights", isFlightSelected),
+                          Icons.flight_takeoff, "Vôos", isFlightSelected),
                       onTap: () {
                         setState(() {
                           isFlightSelected = true;
@@ -148,7 +149,7 @@ class _HomeScreenTopState extends State<HomeScreenTopPart> {
                     SizedBox(width: 20.0),
                     InkWell(
                       child:
-                          ChoiceChip(Icons.hotel, "Hotels", !isFlightSelected),
+                          ChoiceChip(Icons.hotel, "Hoteis", !isFlightSelected),
                       onTap: () {
                         setState(() {
                           isFlightSelected = false;
@@ -208,3 +209,16 @@ class ChoiceChipState extends State<ChoiceChip> {
     );
   }
 }
+
+var viewAllStyle = TextStyle(fontSize: 14.0, color: appTheme.primaryColor);
+
+var homeScreenBottomPart = Column(
+  children: <Widget>[
+    Row(
+      children: <Widget>[
+        Text("Itens assistidos actualmente", style: dropDownMenuItemStyle),
+        Text("VER TODOS(12)", style: viewAllStyle),        
+      ],
+    )
+  ],
+);
