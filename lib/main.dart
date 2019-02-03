@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kiviagem/CustomAppBar.dart';
 import 'package:kiviagem/CustomShapeClipper.dart';
 import 'package:intl/intl.dart';
+
 void main() => runApp(MaterialApp(
       title: "Kiviagem Mock Up",
       debugShowCheckedModeBanner: false,
@@ -20,11 +21,15 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: <Widget>[
-          HomeScreenTopPart(),
-          homeScreenBottomPart,
-        ],
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Column(
+          children: <Widget>[
+            HomeScreenTopPart(),
+            homeScreenBottomPart,
+            homeScreenBottomPart,
+          ],
+        ),
       ),
       bottomNavigationBar: CustomAppBar(),
     );
@@ -240,14 +245,13 @@ var homeScreenBottomPart = Column(
 );
 
 List<CityCard> cityCards = [
-  CityCard("assets/images/lasvegas.jpg", "Las Vegas", "Feb 2019", "45", 4299,
-      2250),
   CityCard(
-      "assets/images/athens.jpg", "Athens", "Apr 2019", "50", 9999, 4159),
-  CityCard(
-      "assets/images/sydney.jpeg", "Sydney", "Dec 2019", "40", 5999, 2399),
+      "assets/images/lasvegas.jpg", "Las Vegas", "Feb 2019", "45", 4299, 2250),
+  CityCard("assets/images/athens.jpg", "Athens", "Apr 2019", "50", 9999, 4159),
+  CityCard("assets/images/sydney.jpeg", "Sydney", "Dec 2019", "40", 5999, 2399),
 ];
 final formatCurrency = NumberFormat.simpleCurrency();
+
 class CityCard extends StatelessWidget {
   final String imagePath, cityName, monthYear, discount;
   final int oldPrice, newPrice;
@@ -281,13 +285,10 @@ class CityCard extends StatelessWidget {
                   height: 90.0,
                   child: Container(
                     decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.bottomCenter,
-                        end: Alignment.topCenter,
-                        colors: [
-                        Colors.black, Colors.black12
-                      ])
-                    ),
+                        gradient: LinearGradient(
+                            begin: Alignment.bottomCenter,
+                            end: Alignment.topCenter,
+                            colors: [Colors.black, Colors.black12])),
                   ),
                 ),
                 Positioned(
@@ -314,13 +315,16 @@ class CityCard extends StatelessWidget {
                         ],
                       ),
                       Container(
-                        padding: EdgeInsets.symmetric(horizontal: 6.0, vertical: 2.0),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 6.0, vertical: 2.0),
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                            color: Colors.white,
                             shape: BoxShape.rectangle,
-                            borderRadius: BorderRadius.all(Radius.circular(10.0))),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(10.0))),
                         child: Text("$discount%",
-                            style: TextStyle(fontSize: 14.0, color: Colors.black)),
+                            style:
+                                TextStyle(fontSize: 14.0, color: Colors.black)),
                       )
                     ],
                   ),
@@ -333,9 +337,17 @@ class CityCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               SizedBox(width: 5.0),
-              Text('${formatCurrency.format(newPrice)}', style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 10.0)),
+              Text('${formatCurrency.format(newPrice)}',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 10.0)),
               SizedBox(width: 5.0),
-              Text("(${formatCurrency.format(oldPrice)})", style: TextStyle(color: Colors.grey, fontWeight: FontWeight.normal, fontSize: 10.0)),
+              Text("(${formatCurrency.format(oldPrice)})",
+                  style: TextStyle(
+                      color: Colors.grey,
+                      fontWeight: FontWeight.normal,
+                      fontSize: 10.0)),
             ],
           ),
         ],
