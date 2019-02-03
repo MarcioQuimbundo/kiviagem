@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kiviagem/CustomAppBar.dart';
 import 'package:kiviagem/CustomShapeClipper.dart';
 import 'package:intl/intl.dart';
+import 'package:kiviagem/flight_list.dart';
 
 void main() => runApp(MaterialApp(
       title: "Kiviagem Mock Up",
@@ -129,9 +130,14 @@ class _HomeScreenTopState extends State<HomeScreenTopPart> {
                         suffixIcon: Material(
                           elevation: 2.0,
                           borderRadius: BorderRadius.all(Radius.circular(30.0)),
-                          child: Icon(
-                            Icons.search,
-                            color: Colors.black,
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => FlightListingScreen()));
+                            },
+                            child: Icon(
+                              Icons.search,
+                              color: Colors.black,
+                            ),
                           ),
                         ),
                         border: InputBorder.none,

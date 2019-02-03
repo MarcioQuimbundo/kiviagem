@@ -4,7 +4,7 @@ final Color discountBackgroundColor = Color(0xFFFFE08D);
 final Color flightBorderColor = Color(0xFFE6E6E6);
 final Color chipBackgroundColor = Color(0xFFF6F6F6);
 
-class FlightListaing extends StatelessWidget {
+class FlightListingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,7 +12,9 @@ class FlightListaing extends StatelessWidget {
         title: Text("Resultado da pesquisa"),
         centerTitle: true,
         leading: InkWell(
-          onTap: () {},
+          onTap: () {
+            Navigator.pop(context);
+          },
           child: Icon(Icons.arrow_back)),
       ),
     );
