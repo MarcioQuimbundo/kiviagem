@@ -10,8 +10,12 @@ void main() => runApp(MaterialApp(
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-
+    return Scaffold(  
+      body: Column(
+        children: <Widget>[
+          HomeScreenTopPart(),
+        ],
+      ),
     );
   }
 }
@@ -30,7 +34,7 @@ class _HomeScreenTopState extends State<HomeScreenTopPart> {
       children: <Widget>[
         ClipPath(
           clipper: CustomShapeClipper(),
-          child: Container(height: 400.0,),
+          child: Container(height: 400.0, color: Colors.orange,),
         )
       ],
     );
