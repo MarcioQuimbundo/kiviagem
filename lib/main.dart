@@ -214,11 +214,53 @@ var viewAllStyle = TextStyle(fontSize: 14.0, color: appTheme.primaryColor);
 
 var homeScreenBottomPart = Column(
   children: <Widget>[
-    Row(
-      children: <Widget>[
-        Text("Itens assistidos actualmente", style: dropDownMenuItemStyle),
-        Text("VER TODOS(12)", style: viewAllStyle),        
-      ],
-    )
+    Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: <Widget>[
+          SizedBox(width: 16.0),
+          Text("Itens + vistos", style: dropDownMenuItemStyle),
+          Spacer(),
+          Text("VER TODOS(12)", style: viewAllStyle),
+        ],
+      ),
+    ),
+    Container(
+      height: 210.0,
+      child: ListView(
+        scrollDirection: Axis.horizontal,
+        children: cityCards,
+      ),
+    ),
   ],
 );
+
+List<CityCard> cityCards = [
+  CityCard("assets/images/lasvegas.jpg", "Las Vegas", "Feb 2019", "45", "4299",
+      "2250"),
+  CityCard(
+      "assets/images/athens.jpg", "Athens", "Apr 2019", "50", "9999", "4159"),
+  CityCard(
+      "assets/images/sydney.jpeg", "Sydney", "Dec 2019", "40", "5999", "2399"),
+];
+
+class CityCard extends StatelessWidget {
+  final String imagePath, cityName, monthYear, discount, oldPrice, newPrice;
+
+  CityCard(this.imagePath, this.cityName, this.monthYear, this.discount,
+      this.oldPrice, this.newPrice);
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: <Widget>[
+        Container(
+          height: 210.0,
+          width: 160.0,
+          child: Image.asset(imagePath),
+        )
+      ],
+    );
+  }
+}
