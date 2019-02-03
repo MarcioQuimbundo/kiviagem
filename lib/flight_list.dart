@@ -23,6 +23,7 @@ class FlightListingScreen extends StatelessWidget {
       body: Column(
         children: <Widget>[
           FlightListTopPart(),
+          FlightBottomPart(),
         ],
       ),
     );
@@ -79,7 +80,7 @@ class FlightListTopPart extends StatelessWidget {
                     Spacer(),
                     Expanded(
                       flex: 1,
-                                          child: Icon(
+                      child: Icon(
                         Icons.import_export,
                         color: Colors.black,
                         size: 32.0,
@@ -91,6 +92,63 @@ class FlightListTopPart extends StatelessWidget {
             ),
           ],
         )
+      ],
+    );
+  }
+}
+
+class FlightBottomPart extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(left: 16.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(
+            "Best deals for the next 6 months",
+            style: dropDownMenuItemStyle,
+          ),
+          SizedBox(height: 10.0),
+          FlightCard(),
+        ],
+      ),
+    );
+  }
+}
+
+class FlightCard extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: <Widget>[
+        Container(
+          margin: EdgeInsets.only(right: 16.0),
+          height: 100.0,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(
+                Radius.circular(10.0),
+              ),
+              border: Border.all(color: flightBorderColor)),
+          child: Column(
+            children: <Widget>[
+              Row(
+                children: <Widget>[
+                  Text(
+                    '${formatCurrency.format(4159)}',
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+                  ),
+                  Text(
+                    '${formatCurrency.format(9999)}',
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0, decoration: TextDecoration.lineThrough, color: Colors.grey),
+                  ),
+                ],
+              )
+            ],
+          ),
+        ),
       ],
     );
   }
