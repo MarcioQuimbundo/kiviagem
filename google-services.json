@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "967228023067",
+    "firebase_url": "https://kiviagem-app.firebaseio.com",
+    "project_id": "kiviagem-app",
+    "storage_bucket": "kiviagem-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:967228023067:android:62682c777768cfba",
+        "android_client_info": {
+          "package_name": "com.example.kiviagem"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "967228023067-in95plpuc5fun8qimn7okf1c6onbdg97.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAb0jcZma6_X4VanMammQH2QoDnw3ZqR5s"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
