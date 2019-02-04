@@ -6,12 +6,19 @@ final Color discountBackgroundColor = Color(0xFFFFE08D);
 final Color flightBorderColor = Color(0xFFE6E6E6);
 final Color chipBackgroundColor = Color(0xFFF6F6F6);
 
-class FlightListingScreen extends StatelessWidget {
-
+class InheritedFlightListing extends InheritedWidget {
   final String fromLocation, toLocation;
 
+  InheritedFlightListing({this.fromLocation, this.toLocation, Widget child}) : super(child : child);
 
-  FlightListingScreen({this.fromLocation, this.toLocation});
+  @override
+  bool updateShouldNotify(InheritedWidget oldWidget) => true;
+
+  static InheritedFlightListing of(BuildContext context) => context.inheritFromWidgetOfExactType(InheritedFlightListing);
+
+}
+
+class FlightListingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +37,7 @@ class FlightListingScreen extends StatelessWidget {
         scrollDirection: Axis.vertical,
               child: Column(
           children: <Widget>[
-            FlightListTopPart(fromLocation: fromLocation, toLocation: toLocation),
+            FlightListTopPart(),
             SizedBox(
               height: 20.0,
             ),
