@@ -7,6 +7,12 @@ final Color flightBorderColor = Color(0xFFE6E6E6);
 final Color chipBackgroundColor = Color(0xFFF6F6F6);
 
 class FlightListingScreen extends StatelessWidget {
+
+  final String fromLocation, toLocation;
+
+
+  FlightListingScreen({this.fromLocation, this.toLocation});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

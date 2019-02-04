@@ -42,6 +42,8 @@ const TextStyle dropDownLabelStyle =
 const TextStyle dropDownMenuItemStyle =
     TextStyle(color: Colors.black, fontSize: 16.0);
 
+final _searchFieldController = TextEditingController(text: locations[1]);
+
 class HomeScreenTopPart extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -121,7 +123,7 @@ class _HomeScreenTopState extends State<HomeScreenTopPart> {
                     elevation: 5.0,
                     borderRadius: BorderRadius.all(Radius.circular(30.0)),
                     child: TextField(
-                      controller: TextEditingController(text: locations[1]),
+                      controller: _searchFieldController,
                       style: dropDownMenuItemStyle,
                       cursorColor: appTheme.primaryColor,
                       decoration: InputDecoration(
@@ -132,7 +134,7 @@ class _HomeScreenTopState extends State<HomeScreenTopPart> {
                           borderRadius: BorderRadius.all(Radius.circular(30.0)),
                           child: InkWell(
                             onTap: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => FlightListingScreen()));
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => FlightListingScreen(fromLocation: locations[selectedLocationIndex], toLocation:_searchFieldController.text)));
                             },
                             child: Icon(
                               Icons.search,
