@@ -50,10 +50,6 @@ class FlightListingScreen extends StatelessWidget {
 }
 
 class FlightListTopPart extends StatelessWidget {
-  final String fromLocation, toLocation;
-
-
-  FlightListTopPart({this.fromLocation, this.toLocation});
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -86,14 +82,14 @@ class FlightListTopPart extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            "$fromLocation",
+                            '${InheritedFlightListing.of(context).fromLocation}',
                             style: TextStyle(fontSize: 16.0),
                           ),
                           Divider(
                             color: Colors.grey,
                           ),
                           Text(
-                            "$toLocation",
+                            '${InheritedFlightListing.of(context).toLocation}',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 16.0),
                           )
