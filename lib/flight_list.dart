@@ -30,7 +30,7 @@ class FlightListingScreen extends StatelessWidget {
         scrollDirection: Axis.vertical,
               child: Column(
           children: <Widget>[
-            FlightListTopPart(),
+            FlightListTopPart(fromLocation: fromLocation, toLocation: toLocation),
             SizedBox(
               height: 20.0,
             ),
@@ -43,6 +43,10 @@ class FlightListingScreen extends StatelessWidget {
 }
 
 class FlightListTopPart extends StatelessWidget {
+  final String fromLocation, toLocation;
+
+
+  FlightListTopPart({this.fromLocation, this.toLocation});
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -75,14 +79,14 @@ class FlightListTopPart extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            "Boston (BOS)",
+                            "$fromLocation",
                             style: TextStyle(fontSize: 16.0),
                           ),
                           Divider(
                             color: Colors.grey,
                           ),
                           Text(
-                            "New York City (JFK)",
+                            "$toLocation",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 16.0),
                           )
