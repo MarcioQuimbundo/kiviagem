@@ -3,13 +3,27 @@ import 'package:kiviagem/CustomAppBar.dart';
 import 'package:kiviagem/CustomShapeClipper.dart';
 import 'package:intl/intl.dart';
 import 'package:kiviagem/flight_list.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'dart:io';
 
-void main() => runApp(MaterialApp(
-      title: "Kiviagem Mock Up",
-      debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
-      theme: appTheme,
-    ));
+Future<void> main() async {
+  final FirebaseApp app = await FirebaseApp.configure(
+      name: 'kiviagem-app',
+      options: Platform.isAndroid
+          ? const FirebaseOptions(
+              googleAppID: '1:967228023067:android:62682c777768cfba',
+              gcmSenderID: '967228023067',
+              databaseURL: 'https://kiviagem-app.firebaseio.com')
+          : null);
+
+  return runApp(MaterialApp(
+    title: "Kiviagem Mock Up",
+    debugShowCheckedModeBanner: false,
+    home: HomeScreen(),
+    theme: appTheme,
+  ));
+}
 
 Color firstColor = Color(0xFFF47D15);
 Color secondColor = Color(0xFFEF7772C);
@@ -134,9 +148,17 @@ class _HomeScreenTopState extends State<HomeScreenTopPart> {
                           borderRadius: BorderRadius.all(Radius.circular(30.0)),
                           child: InkWell(
                             onTap: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => InheritedFlightListing(
-                                fromLocation: locations[selectedLocationIndex], toLocation: _searchFieldController.text, child: FlightListingScreen(),
-                              )));
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          InheritedFlightListing(
+                                            fromLocation: locations[
+                                                selectedLocationIndex],
+                                            toLocation:
+                                                _searchFieldController.text,
+                                            child: FlightListingScreen(),
+                                          )));
                             },
                             child: Icon(
                               Icons.search,
